@@ -3,13 +3,9 @@ import { RepositoryItem } from "./RepositoryItem";
 import '../styles/repositories.scss';
 import { useEffect, useState } from "react";
 
-const url = 'https://api.github.com/orgs/rocketseat/repos';
+const url = 'https://api.github.com/users/alandlan/repos';
 
-const repository = {
-    name: 'unform',
-    description: 'Forms in React',
-    link: 'http://google.com.br'
-}
+
 
 export function RepositoryList(){
 
@@ -26,8 +22,10 @@ export function RepositoryList(){
             <h1>Lista de repositorios</h1>
 
             <ul>
-                <RepositoryItem 
-                    repository={repository} />
+                {repositories.map(repository => {
+                    return <RepositoryItem key={repository.name} repository={repository} />
+                })}
+                
             </ul>
         </section>
     )
